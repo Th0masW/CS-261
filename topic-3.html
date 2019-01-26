@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JSON Parse, Stringify</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">JSON Parse, Stringify</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Script to create Object from JSON string:</strong><br>
+		  var text = '{"Characters":[' +<br>
+'{"firstName":"Jim","lastName":"Raynor" },' +<br>
+'{"firstName":"Sarah","lastName":"Kerrigan" },' +<br>
+'{"firstName":"Hierarch","lastName":"Artanis" }]}';<br><br>
+
+obj = JSON.parse(text);<br>
+document.getElementById("JSON-Demo").innerHTML =<br>
+obj.Characters[1].firstName + " " + obj.Characters[1].lastName;</p>
+		  
+          <p id ="JSON-Demo" class="lead"></p>
+			<hr>
+          
+		  
+		  		  <p class="lead"><strong>Script to create JSON string using Stringify:</strong><br>
+				  
+				  var arr = [ "Zerg", "Terran", "Protoss"];<br>
+				  var myJSON = JSON.stringify(arr);<br>
+				  document.getElementById("Stringify").innerHTML = myJSON;<br><br>
+
+				<p id="Stringify"></p>
+          <hr>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">Web Design</a>
+                    </li>
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">Freebies</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">Tutorials</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+  <script>
+  var text = '{"Characters":[' +
+'{"firstName":"Jim","lastName":"Raynor" },' +
+'{"firstName":"Sarah","lastName":"Kerrigan" },' +
+'{"firstName":"Hierarch","lastName":"Artanis" }]}';
+
+obj = JSON.parse(text);
+document.getElementById("JSON-Demo").innerHTML =
+obj.Characters[1].firstName + " " + obj.Characters[1].lastName;
+
+ </script>
+  
+  <p>Using Stringify, create an JSON string</p>
+  <p id="Stringify"></p>
+
+<script>
+
+var arr = [ "Zerg", "Terran", "Protoss"];
+var myJSON = JSON.stringify(arr);
+document.getElementById("Stringify").innerHTML = myJSON;
+
+</script>
+  
+  </body>
+  
+  </html>
