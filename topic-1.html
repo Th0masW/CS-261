@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Loops:</strong><br></p>
+		  
+		  <p><strong>The While Loop</strong></p>
+		  
+		  <p>The While Loop uses the following form:<br>
+			while (condition) {<br>
+			statement....<br>
+			}</p>
+			
+			<p>Here is an example of a While Loop, it will execute until days is equal to less than 1.</p>
+			<p id="While-Demo"></p>
+		  <script>
+				var Days = 5; //Set variable for days left
+				var vacationText = "";
+				while (Days > 0) {
+						vacationText += "Days until vacation: " + Days + "<br>";			
+				Days--; 
+								}
+				document.getElementById("While-Demo").innerHTML = vacationText;
+			</script>
+			
+			<p><strong>Here is the code:</strong><br>
+			    var Days = 5; //Set variable for days left<br>
+				var vacationText = "";<br>
+				while (Days > 0) {<br>
+						vacationText += "Days until vacation: " + Days + "<br>";	<br>		
+				Days--; <br>
+								}
+				document.getElementById("While-Demo").innerHTML = vacationText;<br></p>
+				<hr>
+				
+			<p><strong>The Do-While Loop</strong></p> 
+		  
+		  <p>The Do-While Loop uses the following form:<br>
+			do (condition) {<br>
+			statement....<br>
+			} while(condition)</p>	
+			<p>The main difference between the Do-While loop and the While loop is that the Do-While has the conditon evaluator at the end of the loop. As a result the loop will always
+				execute at least once. Using essentially the same code as the While loop with the difference that the vairable Days is already zero, the loop runs once. In a While loop, it would 
+				execute at all since the condition is false at the start</p>
+				
+			<p>Here is an example of a D0-While Loop, days are set to zero to start.</p>	
+
+		<p id="Do-While-Demo"></p>
+		  <script>
+				var newDays = 0; //Set variable for days left
+				var vacationTextNew = ""; // Empty string to store results
+				do {
+						vacationTextNew += "Days until vacation: " + Days + "<br>";			
+				newDays--; 
+					} while(newDays > 0);
+				document.getElementById("Do-While-Demo").innerHTML = vacationTextNew;
+			</script>	
+
+			<p><strong>Here is the code:</strong><br>	
+				var newDays = 0; //Set variable for days left<br>
+				var vacationTextNew = ""; // Empty string to store results<br>
+				do {<br>
+						vacationTextNew += "Days until vacation: " + Days + "<br>";	<br>		
+				newDays--; <br>
+					} while(newDays > 0);<br>
+				document.getElementById("Do-While-Demo").innerHTML = vacationTextNew;		<br>
+				
+				<hr>
+
+		  <p><strong>The For Loop</strong></p> 
+		  
+		  <p>The For Loop uses the following form:<br>
+			for (initialization; condition; end-expression ) {<br>
+			statement... <br>
+			}</p>	
+          			<p>Here is an example of a For Loop, it will execute until days until vacation is zero.</p>
+				
+		<p id="For-Demo"></p>
+		  <script>
+				var vacationTextNewFor = ""; // Empty string to store results
+				for (var counter = 5; counter >0; counter--) {
+						vacationTextNewFor += "Days until vacation: " + counter + "<br>";			
+					}
+				document.getElementById("For-Demo").innerHTML = vacationTextNewFor;
+			</script>	
+			<p><strong>Here is the code:</strong><br>
+				var vacationTextNewFor = ""; // Empty string to store results <br>
+				for (var counter = 5; counter >0; counter--) {<br>
+						vacationTextNewFor += "Days until vacation: " + counter + "<br>";<br>			
+					}<br>
+				document.getElementById("For-Demo").innerHTML = vacationTextNewFor;		<br>	
+				
+
+					
+          <hr>
+		  
+		  		  <p><strong>The If statement</strong></p> 
+				  
+		  		  <p>The If statement uses the following form:<br>
+			if (condition) <br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+			 </p>
+		  
+		  <p><strong>The Else statement</strong></p> 
+		  <p>The Else statement uses the following form:<br>
+			if (condition) <br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+				else<br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+			</p>
+		<p><strong>The Else If statement</strong></p> 
+		  <p>The Else If statement uses the following form:<br>
+			if (condition) <br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+				else if<br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+				else<br>
+				{<br>
+					lines of code to be executed if condition is true<br>
+				}<br>
+			}</p>
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+		    
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">Web Design</a>
+                    </li>
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">Freebies</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">Tutorials</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+
+  
+  </body>
+  
+  </html>
