@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Script to createElement, appendChild, insertBefore and removeChild:</strong><br>
+			<p>click the buttons to createElement and appendChild and the other button to removeChild.</p>
+				<button onclick="createAdd()">Create+Append</button>
+				<button onclick="removeChld()">Remove child</button><br>
+				
+				<div id="createAdd"></div>
+				<br><br><br><br><br>
+				<script>
+				function createAdd() 
+				{
+					var paragraph = document.createElement("P");
+					var text=document.createTextNode("This paragraph was created using createElement, then appened to the DIV using appendchild.");
+					paragraph.appendChild(text);
+					document.getElementById("createAdd").appendChild(paragraph);
+				}
+
+				function removeChld() 
+				{
+					var child = document.getElementById("createAdd");
+					child.parentNode.removeChild(child);
+					//item.parentNode.removeChild(item);
+					//document.getElementById("createAdd").removeChild(text);
+				}
+				</script>
+		  
+		  
+			<p>Here is the script used, removeChild is NOT a good name for the function as it seems to be a reserved phrase,
+				hence why the function name is removeChld.</p>
+				
+				<p>
+						function createAdd() <br>
+				{<br>
+					var paragraph = document.createElement("P");<br>
+					var text=document.createTextNode("This paragraph was created using createElement, then appened to the DIV using appendchild.");<br>
+					paragraph.appendChild(text);<br>
+					document.getElementById("createAdd").appendChild(paragraph);<br>
+				}<br>
+<br><br>
+				function removeChld() <br>
+				{<br>
+					var child = document.getElementById("createAdd");<br>
+					child.parentNode.removeChild(child);<br>
+					//item.parentNode.removeChild(item);<br>
+					//document.getElementById("createAdd").removeChild(text);<br>
+				}<br><br>
+				</p>
+		  
+          
+          <hr>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">Web Design</a>
+                    </li>
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">Freebies</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">Tutorials</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+  
+  </body>
+  
+  </html>
