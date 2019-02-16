@@ -13,3 +13,20 @@ body {
     padding-top: 56px;
   }
 }
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #646;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1;
+    margin-bottom: 1em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}

@@ -31,15 +31,6 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -173,8 +164,26 @@
 	<p>Just using the <strong>.length</strong> property of the storage to do a loop to display the items in the list. The other part are to show a list and to have the 
 	delete item from the list button.</p>
 	
+	<br>
+	<hr>
+	<p class="lead">Removing an item to the Todo list.</p><br>
+		  <strong>
+		 function removeToDoItemSession() {<br>
+    var id = this.getAttribute('id');<br>
+    var todoSession = getToDoListSession();<br>
+    todoSession.splice(id, 1);<br>
+    sessionStorage.setItem('todoSession', JSON.stringify(todoSession));<br>
+<br>
+    showToDoItemSession();<br>
+<br>
+    return false;<br>
+}<br>
+}<br></strong>
+	<p>Using the id of the item, it is selected and then it is removed using splice: <strong>splice(id, 1)</strong>.<br>
+	Once the element is removed, then it is written back to storage as a string (using stringify).
+	</p>
 	
-	
+
 	<br>
 	<hr>
 	<p class="lead">Difference between local and session storage</p><br>
@@ -228,26 +237,26 @@
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">Web Design</a>
+                      Local Storage
                     </li>
                     <li>
-                      <a href="#">HTML</a>
+                      JSON
                     </li>
                     <li>
-                      <a href="#">Freebies</a>
+                      Stringify
                     </li>
                   </ul>
                 </div>
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#">JavaScript</a>
+                      Session Storage
                     </li>
                     <li>
-                      <a href="#">CSS</a>
+                      
                     </li>
                     <li>
-                      <a href="#">Tutorials</a>
+                      
                     </li>
                   </ul>
                 </div>
@@ -257,9 +266,10 @@
 
           <!-- Side Widget -->
           <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
+            <h5 class="card-header">Summary</h5>
             <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+              Using local and session storage, strings, objects and even function(with a bit of fiddling) can be stored and 
+			  retrieved for current/future use.
             </div>
           </div>
 
