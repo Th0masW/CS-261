@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects.</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Session Storage Example</strong><br>
+			
+		  <p>Session storage stores data for the life span of the session. Once the browser is closed, then the session is lost along with the data.</p>
+		  
+			<input id="SessionToDoList"><button id="addToDoSession">Add</button>
+				<div id="ToDoList"></div>
+				
+				<script src="ToDo.js"></script>	
+		  
+          
+          <hr>
+		  
+		  <p class="lead"><strong>Local Storage Example</strong><br>
+			
+		  <p>Local storage stores data with no expiration date. So the next time you load a page into your browser, the data stored can be loaded and used 
+		  again.</p>
+		  
+		  <p>Here is a ToDo list that is using local storage, this way the list can actually be used more than just one browser session.</p>
+		  
+		  <input id="LocalToDoList"><button id="addToDoLocal">Add</button>
+				<div id="ToDoListLocal"></div>
+				
+				<script src="ToDoLocal.js"></script>
+		  
+
+		  
+		<hr>
+		  
+		  <p class="lead"><strong>Local Storage </strong><br>
+			
+		  <p>Local storage stores stores date in Key-Value pairs with a size limit of 5 MB.
+		  Web storage is per origin (per domain and protocol). All pages, from one origin, can store and access the same data.</p>
+		  
+		  <p>HTML5 local storage is structured on named key/value pairs, unlike other databases that make use of SQL-intense applications. 
+		  Data is stored based on a named key. After that, data may be retrieved using the same key. The named key is in a string format. 
+		  The data may be of any type supported by JavaScript, such as Booleans, strings, floats or integers. Even so, 
+		  the data is generally saved as a string. If users store and retrieve anything other than strings, they must make use of functions, 
+		  such as parseFloat() or parseInt(), to coerce the recovered data to the expected JavaScript datatype. <a href ="https://www.techopedia.com/definition/27674/html5-local-storage">https://www.techopedia.com/definition/27674/html5-local-storage</a></p>
+		  
+		  <p>Here is the code examples on how the above works.<br></p>
+		  
+		  <p class="lead">Getting the list from the storage</p><br>
+		  <strong>
+		  function getToDoListSession() {<br>
+    var todoSession = new Array;<br>
+    var todos_session_str = sessionStorage.getItem('todoSession');<br>
+    if (todos_session_str !== null) {<br>
+        todoSession = JSON.parse(todos_session_str); <br>
+    }<br>
+    return todoSession;<br>
+}<br></strong>
+
+	<p>It first checks to see if there is actually any data stored. If there is, then JSON parse is used to retrieve the stoarage and convert to
+	Javascript styles data.</p>
+	<br>
+	<hr>
+	<p class="lead">Adding an item to the Todo list.</p><br>
+		  <strong>
+		  function addToDoItemSession() {<br>
+    var SessionToDoList = document.getElementById('SessionToDoList').value;<br>
+<br>
+    var todoSession = getToDoListSession();<br>
+    todoSession.push(SessionToDoList);<br>
+    sessionStorage.setItem('todoSession', JSON.stringify(todoSession));<br>
+	document.getElementById('SessionToDoList').value = '';<br>
+    showToDoItemSession();<br>
+<br>
+    return false;<br>
+}<br></strong>
+	<p>The list item is "pushed" into the database. When that happens the stringify method is called as the item needs to be stored as a string in the 
+	local storage.
+	</p>
+	
+	<br>
+	<hr>
+	<p class="lead">Show the Todo list.</p><br>
+		  <strong>
+		  
+		  function showToDoItemSession() {<br>
+    var todoSession = getToDoListSession();<br>
+<br>
+    var html = '&lt;br&gt;&lt;ul&gt;';<br>
+    for(var i=0; i&lt;todoSession.length; i++) {<br>
+        html += '&lt;li&gt;' + todoSession[i] + "&emsp;" + '&lt;button class="removeToDoItemSession" id="' + i  + '"&gt; X &lt;/button&gt;&lt;/li&gt;&lt;br&gt;';<br>
+    };<br>
+    html += '&lt;/ul&gt;';<br>
+	<br>
+    document.getElementById('ToDoList').innerHTML = html;<br>
+	<br>
+    var buttons = document.getElementsByClassName('removeToDoItemSession');<br>
+    for (var i=0; i < buttons.length; i++) {<br>
+        buttons[i].addEventListener('click', removeToDoItemSession);<br>
+    };<br>
+		}<br></strong>
+	
+	<p>Just using the <strong>.length</strong> property of the storage to do a loop to display the items in the list. The other part are to show a list and to have the 
+	delete item from the list button.</p>
+	
+	
+	
+	<br>
+	<hr>
+	<p class="lead">Difference between local and session storage</p><br>
+		 
+	<p>Two Javascript files are referenced for this, ToDo.js and ToDoLocal.js. The actual code is exactly the same, other than variable names being changed
+	so the two files can run on the same page.</p>
+	<p>
+		The only difference is this:<br>
+		For session storage<br>
+		<strong> var todos_session_str = sessionStorage.getItem('todoSession');</strong>
+		For local storage:<br>
+		<strong>var todos_str = localStorage.getItem('todo');</strong><br>
+		So the difference is only in how the storage is declared. sessionStorage vs. localStorage.<br>
+	</p>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">Web Design</a>
+                    </li>
+                    <li>
+                      <a href="#">HTML</a>
+                    </li>
+                    <li>
+                      <a href="#">Freebies</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#">JavaScript</a>
+                    </li>
+                    <li>
+                      <a href="#">CSS</a>
+                    </li>
+                    <li>
+                      <a href="#">Tutorials</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+  
+  </body>
+  
+  </html>
