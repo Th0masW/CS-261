@@ -1,0 +1,25 @@
+
+
+#magic {
+        width: 55%;
+        height: 190px;
+        cursor: pointer;
+        box-shadow: 0px 0px 15px #CCC;
+        border-radius: 10px;
+        margin: 0 auto;
+        background-color: black;
+        transition: background-color .10s ease-out;
+    }
+	
+	#boxy {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: blue;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: green;
+}

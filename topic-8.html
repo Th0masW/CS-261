@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript.</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	    <!-- Custom styles for this template -->
+    <link href="css/topic-8.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript.</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>CSS transitions using Javascript:</strong><br>
+			<p>The original property is set with CSS, using Javascript it is possible to change the properties
+			on the fly.<br>
+			Below is a rectangle that is black. The container will be called "magic"</p>
+			
+			<div id="magic"></div>
+			<br>
+			<p>Clicking the box will change it's color.</p>
+			
+			<p>Here is the script that does it. The script modifies the color property with this statement:
+<strong> magic.style.backgroundColor = color</strong><br> The function changeColor randomly generates a new color which is assigned with each click.</p>
+
+				<p><strong>
+				var container = document.querySelector("#container");<br>
+				var zeros = "0000000";<br>
+ <br>
+				container.addEventListener("click", changeColor, false);<br>
+ <br>
+				function changeColor(e) {<br>
+				var color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);<br>
+				var colorLength = color.length;<br>
+ <br>
+				if (colorLength < 7) {<br>
+				color += zeros.substring(0, zeros.length - colorLength);<br>
+			}<br>
+				container.style.backgroundColor = color;<br>
+			}<br></strong></p>
+				
+			<script>
+				var magic = document.querySelector("#magic");
+				var zeros = "0000000";
+			 
+				magic.addEventListener("click", changeColor, false);
+			 
+				function changeColor(e) {
+					var color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+					var colorLength = color.length;
+			 
+					if (colorLength < 7) {
+					  color += zeros.substring(0, zeros.length - colorLength);
+					}
+					magic.style.backgroundColor = color;
+				}
+  </script>	
+				         
+          <hr>
+		  
+		  <p class="lead"><strong>CSS animations using Javascript:</strong><br>
+			<p>CSS Animations can be done using Javascript...<br>
+			The thing is that CSS is powerful enough that it is questionable if you need to use Javascript very much with it.<br>
+			It is handy to start/stop the animations, but other than that...</p>
+			
+			<br>
+						<p>Here is a script that annimates a box dropping down the screen.</p>
+			
+			<script>
+				function myMove() {
+				  var elem = document.getElementById("animate");   
+				  var pos = 0;
+				  var id = setInterval(frame, 5);
+				  function frame() {
+					if (pos == 350) {
+					  clearInterval(id);
+					} else {
+					  pos++; 
+					  elem.style.top = pos + "px"; 
+					  elem.style.left = pos + "px"; 
+					}
+				  }
+				}
+			</script>
+			
+			<p><button onclick="myMove()">Click Me</button></p> 
+			<div id ="boxy">
+				<div id ="animate"></div>
+			</div>
+			<p></p>
+			<p>Here is the CSS:</p>
+			<p><strong>
+				  #boxy {<br>
+				  width: 400px;<br>
+				  height: 400px;<br>
+				  position: relative;<br>
+				  background: blue;<br>
+				}<br>
+				#animate {<br>
+				  width: 50px;<br>
+				  height: 50px;<br>
+				  position: absolute;<br>
+				  background-color: green;<br>
+				}<br>
+			
+			</strong></p>
+			<p>And the script:</p>
+			<p><strong>
+			function myMove() {<br>
+				  var elem = document.getElementById("animate");   <br>
+				  var pos = 0;<br>
+				  var id = setInterval(frame, 5);<br>
+				  function frame() {<br>
+					if (pos == 350) {<br>
+					  clearInterval(id);<br>
+					} else {<br>
+					  pos++; <br>
+					  elem.style.top = pos + "px"; <br>
+					  elem.style.left = pos + "px"; <br>
+					}<br>
+				  }<br>
+				}<br>
+			</strong></p>
+			
+			
+			
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+</div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      CSS Animations
+                    </li>
+                    <li>
+                      Transitions
+                    </li>
+                    <li>
+                      Javascript
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+  
+  </body>
+  
+  </html>
