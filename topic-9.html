@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events.</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	    <!-- Custom styles for this template -->
+    <link href="css/topic-9.css" rel="stylesheet">
+	
+	</head>
+  <body onload="demoFunction()">
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Standard JavaScript Events Including those for Mobile Devices (
+		  Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events.</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>OnLoad event</strong><br></p>
+		  
+		  <p>When this page loaded, it triggered an alert window to come up saying that the page was loaded.</p>
+		  <p>Here is the script for this:<br></p>
+		  
+		  <p><strong>onload="demoFunction()"<br></strong></p>
+		  <p>The onload is placed in the body of the webpage, when the page is loaded, it calls the script, which in this instance is named
+		  demoFunction. The actual function is just a simple alert window, in reality it could be any funtion wanted.</p>
+		  <p><strong>
+		  function demoFunction() {<br>
+			alert("This alert box was called when the page loaded.");<br>
+		  </strong></p>
+		  
+		  <script>
+			function demoFunction() {
+			alert("This alert box was called when the page loaded.");
+			}
+			</script>
+		           <hr> 
+		<p class="lead"><strong>Touch Events</strong><br></p>
+          
+		  <p>Below is a ball, you can use your finger to move it, or a mouse.</p>
+
+			  <div id="outerballPit">
+				<div id="ballPit">
+				 <div id="item">
+				  </div>
+				</div>
+			  </div>
+			  <br>
+			  <p>The CSS is straightforward enough, just creating a container (ballPit) and an object.</p>
+			  <p><strong>
+			  
+			  #ballPit { <br>
+      width: 100%;<br>
+      height: 400px;<br>
+      background-color: #333;<br>
+      display: flex;<br>
+      align-items: center;<br>
+      justify-content: center;<br>
+      overflow: hidden;<br>
+      border-radius: 7px;<br>
+      touch-action: none;<br>
+    }<br>
+    #item {<br>
+      width: 100px;<br>
+      height: 100px;<br>
+      background-color: rgb(245, 230, 99);<br>
+      border: 10px solid rgba(136, 136, 136, .5);<br>
+      border-radius: 50%;<br>
+      touch-action: none;<br>
+      user-select: none;<br>
+    }<br>
+    #item:active {<br>
+      background-color: rgba(168, 218, 220, 1.00);<br>
+    }<br>
+    #item:hover {<br>
+      cursor: pointer;<br>
+      border-width: 20px;<br>
+    }</strong></p>
+			  <p>The Javascript is not difficult. There are event listeners for both touch (touchstart) and mouse input (mouseXX).<br>
+			  From there you have your XY coordinates, and then it is a matter of tracking where the new position is and moving the object there.</p>
+			  <p><strong>Here is the script:<br>
+			  var dragItem = document.querySelector("#item");<br>
+    var container = document.querySelector("#ballPit");<br>
+<br>
+    var active = false;<br>
+    var currentX;<br>
+    var currentY;<br>
+    var initialX;<br>
+    var initialY;<br>
+    var xOffset = 0;<br>
+    var yOffset = 0;<br>
+<br>
+    container.addEventListener("touchstart", dragStart, false);<br>
+    container.addEventListener("touchend", dragEnd, false);<br>
+    container.addEventListener("touchmove", drag, false);<br>
+<br>
+    container.addEventListener("mousedown", dragStart, false);<br>
+    container.addEventListener("mouseup", dragEnd, false);<br>
+    container.addEventListener("mousemove", drag, false);<br>
+<br>
+    function dragStart(e) {<br>
+      if (e.type === "touchstart") {<br>
+        initialX = e.touches[0].clientX - xOffset;<br>
+        initialY = e.touches[0].clientY - yOffset;<br>
+      } else {<br>
+        initialX = e.clientX - xOffset;<br>
+        initialY = e.clientY - yOffset;<br>
+      }<br>
+<br>
+      if (e.target === dragItem) {<br>
+        active = true;<br>
+      }<br>
+    }<br>
+<br>
+    function dragEnd(e) {<br>
+      initialX = currentX;<br>
+      initialY = currentY;<br>
+<br>
+      active = false;<br>
+    }<br>
+<br>
+    function drag(e) {<br>
+      if (active) {<br>
+      <br>
+        e.preventDefault();<br>
+      <br>
+        if (e.type === "touchmove") {<br>
+          currentX = e.touches[0].clientX - initialX;<br>
+          currentY = e.touches[0].clientY - initialY;<br>
+        } else {<br>
+          currentX = e.clientX - initialX;<br>
+          currentY = e.clientY - initialY;<br>
+        }<br>
+<br>
+        xOffset = currentX;<br>
+        yOffset = currentY;<br>
+<br>
+        setTranslate(currentX, currentY, dragItem);<br>
+      }<br>
+    }<br>
+<br>
+    function setTranslate(xPos, yPos, el) {<br>
+      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";<br>
+    }<br>
+			  <br>
+			  </strong></p>
+			  
+			  
+			  <script>
+    var dragItem = document.querySelector("#item");
+    var container = document.querySelector("#ballPit");
+
+    var active = false;
+    var currentX;
+    var currentY;
+    var initialX;
+    var initialY;
+    var xOffset = 0;
+    var yOffset = 0;
+
+    container.addEventListener("touchstart", dragStart, false);
+    container.addEventListener("touchend", dragEnd, false);
+    container.addEventListener("touchmove", drag, false);
+
+    container.addEventListener("mousedown", dragStart, false);
+    container.addEventListener("mouseup", dragEnd, false);
+    container.addEventListener("mousemove", drag, false);
+
+    function dragStart(e) {
+      if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
+      } else {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
+      }
+
+      if (e.target === dragItem) {
+        active = true;
+      }
+    }
+
+    function dragEnd(e) {
+      initialX = currentX;
+      initialY = currentY;
+
+      active = false;
+    }
+
+    function drag(e) {
+      if (active) {
+      
+        e.preventDefault();
+      
+        if (e.type === "touchmove") {
+          currentX = e.touches[0].clientX - initialX;
+          currentY = e.touches[0].clientY - initialY;
+        } else {
+          currentX = e.clientX - initialX;
+          currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, dragItem);
+      }
+    }
+
+    function setTranslate(xPos, yPos, el) {
+      el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+    }
+  </script>
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      OnLoad
+                    </li>
+                    <li>
+                      touchBegin
+                    </li>
+                    <li>
+                      Tranistion Events
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              Using onLoad events to fire off functions and using touch to do things.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+
+  </body>
+  
+  </html>
