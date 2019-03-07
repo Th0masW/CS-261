@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Object Creation Functions, Inheritance, Properties, Methods, Instantiation</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Object Creation Functions, Inheritance, Properties, Methods, Instantiation</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Script to create Object from JSON string:</strong><br></p>
+      <p>In JavaScript you can create an object by defining it, a basic example looks like a value pair definition.</p>
+      <p><i> var pokemon = {name: "Luxray Lvl X", hitPoints: 110,type: "Electric"}</i></p>
+      <p>Using the above object definition, you can see how values can be returned like so:</p>
+      
+      <p class ="lead" id="demo1"></p>
+
+      <script>
+      var pokemon = {name: "Luxray Lvl X", hitPoints: 110,type: "Electric"}
+      document.getElementById("demo1").innerHTML = pokemon.name +" is an " + pokemon.type + " Pokemon with " + pokemon.hitPoints +"HP";
+      </script>
+      <br>
+      <p>One nice feature is that you can include a function name in the object itself. In the above example, to display the nicely formatted 
+        text about the Luxray, this code was attached to the .innerHTML property:<br> </p>
+      <p><i>.innerHTML = pokemon.name +" is an " + pokemon.type + " Pokemon with " + pokemon.hitPoints +"HP"</i></p>
+      <p>This could be re-written to include the display function in the code, like this:</p>
+      <p><i>var pokemon = {<br>name: "Luxray Lvl X",<br> hitPoints: 110,<br>type: "Electric"<br>}</i></p>
+     
+
+      <P>Here is the same output as before, just using the function built into the object:</P>
+        <p class="lead" id="demo2"></p>
+		  
+		        <script>
+      var pokemon1 = {
+        name: "Luxray Lvl X", 
+        hitPoints: 110,
+        type: "Electric",
+        displayPokemon : function() {
+          return this.name +" is an " + this.type + " Pokemon with " + this.hitPoints +"HP";
+          }
+        };   
+        document.getElementById("demo2").innerHTML = pokemon1.displayPokemon() ;
+      </script>
+      
+      <p>Here is the script to do this, notice how you can use DOT notation to bring up the object parts. Also how <i>this.</i> was used to self reference.</p>
+      <p><i>
+          var pokemon1 = {<br>
+            name: "Luxray Lvl X", <br>
+            hitPoints: 110,<br>
+            type: "Electric",<br>
+            displayPokemon : function() {<br>
+              return this.name +" is an " + this.type + " Pokemon with " + this.hitPoints +"HP";<br>
+              }<br>
+            }; <br>  
+            document.getElementById("demo2").innerHTML = pokemon1.displayPokemon() ;<br>
+      </i></p>
+
+      <p>One thing, if when the function is called, if the () are left out, the actual function will print out rather than the desired output. Here is the code missing the ()</p>
+      <p><i>
+          document.getElementById("demo2").innerHTML = pokemon1.displayPokemon ;
+      </i></p>
+      <p>Here is the output:</p>
+      <p class="lead" id="demo3"></p>
+		  
+      <script>
+          var pokemon2 = {
+            name: "Luxray Lvl X", 
+            hitPoints: 110,
+            type: "Electric",
+            displayPokemon : function() {
+              return this.name +" is an " + this.type + " Pokemon with " + this.hitPoints +"HP";
+              }
+            };   
+            document.getElementById("demo3").innerHTML = pokemon1.displayPokemon;
+      </script>
+
+		  			<hr>
+        
+		  
+            <p class="lead"><strong>Inheritance, Instantiation and Constructors</strong></p>
+            <p>While it is very easy to set up an object, it would not be very fun to create objects all the time using the above methods. It is possible to use a function
+              to create objects and then use the new keyword in the creation.
+            </p>
+            <P>The object can be created like so:</P>
+            <p><i>
+                function CreatePokemon(name, type, hitPoints) {<br>
+                  this.name = name;<br>
+                  this.type = type;<br>
+                  this.hitPoints = hitPoints;<br>
+                }<br>
+                <br>// Create a new object named "pika" <br>
+                var pika = new CreatePokemon("Pikachu", "Electric", 40);<br>
+            </i></p>
+            <p>Now to display the name of the new Pokemon, just use to display the name of the new Pokemon.<br><br><i>document.getElementById("demo4").innerHTML = pika.name;</i> <br><br> Below
+            is the output:</p>
+            <p class="lead" id="demo4"></p>
+
+            <script>
+
+            function CreateTrainer(firstName, lastName, beatElite4) {
+              this.firstName = firstName;
+              this.lastName = lastName;
+              this.beatElite4 = beatElite4;
+              }
+
+              var ash = new CreateTrainer("Ash", "Ketchum", true);
+
+            function CreatePokemon(name, type, hitPoints, trainer) {
+                this.name = name;
+                this.type = type;
+                this.hitPoints = hitPoints;
+                this.trainer = trainer;
+              }
+
+              var pika = new CreatePokemon("Pikachu", "Electric", 40, ash);
+
+              document.getElementById("demo4").innerHTML = pika.name;
+
+
+            </script>
+
+            <p>Since a Pokemon should have a trainer, let's create an object for trainers.</p>
+            <p><i>
+                function CreateTrainer(firstName, lastName, beatElite4) {<br>
+                  this.firstName = fistName;<br>
+                  this.lastName = lastName;<br>
+                  this.beatElite4 = beatElite4;<br>
+                }<br>
+                <br>// Create a new object named "Ash" <br>
+                var ash = new CreateTrainer("Ash", "Ketchum", true);<br>
+
+            </i></p>
+
+            <p>Now let's modify the CreatePokemon object to include a trainer:<br>
+            <i>
+                function CreatePokemon(name, type, hitPoints, <strong>trainer</strong>) {<br>
+                  this.name = name;<br>
+                  this.type = type;<br>
+                  this.hitPoints = hitPoints;<br>
+                 <strong> this.trainer = trainer;</strong><br>
+                }<br>
+
+            </i></p>
+
+            <p>Now with the trainer added to the object, it is possible to access the information from the Trainer object from the Pokemon object.</p>
+            <p>Using the innerHTML, we can produce this sentence by accessing the elements in the objects.<br>
+            <i>document.getElementById("demo5").innerHTML = pika.trainer.firstName + " and " + pika.name + " train together!";</i></p>
+
+            <p class="lead" id="demo5"></p>
+
+            <script>
+              document.getElementById("demo5").innerHTML = pika.trainer.firstName + " and " + pika.name + " train together!";
+            </script>
+
+
+
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      Objects
+                    </li>
+                    <li>
+                      Inheritance
+                    </li>
+                    <li>
+                      Properties and methods
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              Working with objects in JavaScript as well as using funtions, methods and other fun things!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+	
+	
+	
+  
+  
+  
+  </body>
+  
+  </html>
