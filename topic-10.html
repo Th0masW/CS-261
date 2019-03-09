@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTML5 Tags - Video, Audio, and Canvas</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">HTML5 Tags - Video, Audio, and Canvas</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Embed Video in a page</strong></p>
+		  
+      <div style="text-align:center"> 
+          <video id="video1" width="500">
+            <source src="videos/pirates.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video><br>
+          <button onclick="playPause()">Play/Pause</button> 
+          <button onclick="makeBig()">Big</button>
+          <button onclick="makeSmall()">Small</button>
+          <button onclick="makeNormal()">Normal</button>
+          <br><br>
+        </div> 
+        
+        <script> 
+        var myVideo = document.getElementById("video1"); 
+        
+        function playPause() { 
+          if (myVideo.paused) 
+            myVideo.play(); 
+          else 
+            myVideo.pause(); 
+        } 
+        
+        function makeBig() { 
+            myVideo.width = 600; 
+        } 
+        
+        function makeSmall() { 
+            myVideo.width = 320; 
+        } 
+        
+        function makeNormal() { 
+            myVideo.width = 500; 
+        } 
+        </script> 
+      
+        <p>With HTML5, it is possible to embed a video with no add-ons like Flash. The video can be controlled with
+          some simple JavaScript funtions. The above video is forst embeded into a video container, here is the code:
+        <br><i>video id="video1" width="500"<br>
+            source src="videos/pirates.mp4" type="video/mp4"</i></p>
+
+              <p>Then the buttons are added to call and control the playback function:<br>
+              <i>button onclick="playPause()">Play/Pause /button <br>
+                button onclick="makeBig()">Big /button <br>
+                button onclick="makeSmall()">Small /button <br>
+                button onclick="makeNormal()">Normal /button</i>
+              </p>
+              <p>The actual script just uses the HTML5 functions to play the video.<br>
+              <i>
+                  var myVideo = document.getElementById("video1"); <br>
+                  <br>
+                  function playPause() { <br>
+                    if (myVideo.paused) <br>
+                      myVideo.play(); <br>
+                    else <br>
+                      myVideo.pause(); <br>
+                  } <br>
+                  <br>
+                  function makeBig() { <br>
+                      myVideo.width = 600; <br>
+                  } <br>
+                  <br>
+                  function makeSmall() { <br>
+                      myVideo.width = 320; <br>
+                  } <br>
+                  <br>
+                  function makeNormal() { <br>
+                      myVideo.width = 500; <br>
+                  } <br>
+              </i></p>
+              <p>Video courtesy of Thomas Whitelock &copy; 2019</p>
+          <hr>    
+		  
+		  		  <p class="lead"><strong>Embed a sound clip into a page</strong><br>
+				  
+          <hr>
+
+          <p class="lead"><strong>Embed a sound clip into a page</strong></p>
+          <p>Once again, with the power of HTML5, there is not a lot involved in this.</p>
+				  <audio controls>
+              <source src="music/CruelSummer.MP3" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+            <p>Essentially you place the link into the "audio controls" block and the player is created. <br>
+            Here is the code:<br>
+          <i>
+            audio controls <br>
+            source src="music/CruelSummer.MP3" type="audio/mpeg"<br>
+            /audio<br>
+          </i></p>
+              
+            <hr>
+		  		  <p class="lead"><strong>Using Canvas</strong><br>
+              <p>Canvas is quite powerful, in the past, things like this required Flash or something along those
+                lines to produce dynamic graphics. Color me impressed with what can be done using canvas.
+              </p>
+              <p>Here is a fairly simple bar graph style graphic. Which will be handy for my project.</p>
+
+              <canvas id="canvas" width="150" height="150"></canvas>
+
+              <script>
+              function draw() {
+                  var ctx = document.getElementById('canvas').getContext('2d');
+
+                  // Draw background
+                  ctx.fillStyle = 'rgb(255, 221, 0)';
+                  ctx.fillRect(0, 0, 150, 37.5);
+                  ctx.fillStyle = 'rgb(102, 204, 0)';
+                  ctx.fillRect(0, 37.5, 150, 37.5);
+                  ctx.fillStyle = 'rgb(0, 153, 255)';
+                  ctx.fillRect(0, 75, 150, 37.5);
+                  ctx.fillStyle = 'rgb(255, 51, 0)';
+                  ctx.fillRect(0, 112.5, 150, 37.5);
+
+                  // Draw semi transparent rectangles
+                  for (var i = 0; i < 10; i++) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, ' + (i + 1) / 10 + ')';
+                    for (var j = 0; j < 4; j++) {
+                      ctx.fillRect(5 + i * 14, 5 + j * 37.5, 14, 27.5);
+                    }
+                  }
+                }draw();
+              </script>
+          <p>Here is the code for it:<br><i>
+
+              function draw() {<br>
+                var ctx = document.getElementById('canvas').getContext('2d');<br><br>
+              
+                // Draw background<br>
+                ctx.fillStyle = 'rgb(255, 221, 0)';<br>
+                ctx.fillRect(0, 0, 150, 37.5);<br>
+                ctx.fillStyle = 'rgb(102, 204, 0)';<br>
+                ctx.fillRect(0, 37.5, 150, 37.5);<br>
+                ctx.fillStyle = 'rgb(0, 153, 255)';<br>
+                ctx.fillRect(0, 75, 150, 37.5);<br>
+                ctx.fillStyle = 'rgb(255, 51, 0)';<br>
+                ctx.fillRect(0, 112.5, 150, 37.5);<br>
+                <br>
+                // Draw semi transparent rectangles<br>
+                for (var i = 0; i < 10; i++) {<br></10>
+                  ctx.fillStyle = 'rgba(255, 255, 255, ' + (i + 1) / 10 + ')';<br>
+                  for (var j = 0; j < 4; j++) {<br></4>
+                    ctx.fillRect(5 + i * 14, 5 + j * 3<br>7.5, 14, 27.5);<br>
+                  }<br>
+                }<br>
+              }draw();<br>
+          </i></p>
+
+          <!-- Comments Form -->
+          <div class="card my-4">         
+          </div>
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      HTML 5
+                    </li>
+                    <li>
+                      Canvas
+                    </li>
+                    <li>
+                      Audio
+                      </li>
+                      <li>
+                         
+                        
+                        Video
+                          </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              Using HTML 5 Tags to show audio and video.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	
+  
+  </body>
+  
+  </html>
