@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries </title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+
+        <!-- topic 11 CSS for this template -->
+        <link href="css/topic-11.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries </h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+		  <p class="lead"><strong>Basic transition of a box</strong><br></p>
+		  
+          <p id ="JSON-Demo" class="lead"></p>
+            <p>Here is a basic DIV box, click the buttons to change the color.</p>
+
+            <script>
+                function changeBoxColor(divID,color){
+                    var elem = document.getElementById(divID);
+                    elem.style.transition = "background 1.0s linear 0s";
+                    elem.style.background = color;
+                }
+                </script>
+            <div id="box1"></div>
+            <button onclick="changeBoxColor('box1','red')">Red</button>
+            <button onclick="changeBoxColor('box1','yellow')">Yellow</button>
+            <button onclick="changeBoxColor('box1','blue')">Blue</button><br>
+
+            <br><p>Here is the CSS for the box container:<br><i>
+                div#box1 {<br>
+                    background: blue;<br>
+                    width: 400px;<br>
+                    height: 200px;<br>
+                }<br>
+            </i></p>
+
+            <p>The JavaScipt uses the "onclick" to change the color by using the transition property:<br>
+            <i>
+                elem.style.transition = "background 1.0s linear 0s";<br>
+            </i>
+            The background is changed over a period of a second in a linear way, the 0s means that the transition starts with zero delay.    
+        </p>
+                 
+          
+          <hr>
+          
+		  
+		  		  <p class="lead"><strong>Useless CSS transition</strong></p><br>
+                  
+                    <script>
+                        function slideOpen(boxSlide){
+                            var elem = document.getElementById(boxSlide);
+                            elem.style.transition = "height 1.5s linear 0s";
+                            elem.style.height = "200px";
+                        }
+                        function slideClosed(boxSlide){
+                            var elem = document.getElementById(boxSlide);
+                            elem.style.transition = "height 1.5s linear 0s";
+                            elem.style.height = "0px";
+                        }
+                        </script>
+
+                    <div id="box2">Maybe some sort of message here?</div><br>
+                    <button onclick="slideClosed('box2');">Close Box</button>
+                    <button onclick="slideOpen('box2');">Open Box</button>
+				  
+                        <p>
+                            The same basic CSS is used as the previous example. The script either changes the height of the element to 200px or changes it to 0px.<br>
+                            The transition is the same as before<br>
+                            <i>elem.style.transition = "height 1.5s linear 0s";</i>
+                            <br>
+                            The height is adjusted like this:<br>
+                            <i>
+                                Open the box: elem.style.height = "200px";<br>
+                                Close the box: elem.style.height = "0px";<br>
+                            </i>
+                        </p>
+
+          <hr>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      CSS3
+                    </li>
+                    <li>
+                      Transitions
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              Using JavaScript to make transitions happen sans pre-made libraries.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  
+  </body>
+  
+  </html>
