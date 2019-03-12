@@ -1,0 +1,22 @@
+
+
+#myDivX {
+    width: 300px;
+    height: 100px;
+  background-color: green;
+  border: 1px solid black;
+}
+
+#myDivY {
+    width: 300px;
+    height: 100px;
+  background-color: red;
+  border: 1px solid black;
+}
+
+#myDivZ {
+    width: 300px;
+    height: 100px;
+   background-color: rgb(179, 255, 0);
+   border: 1px solid black;
+}

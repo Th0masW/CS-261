@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+
+        <!-- Custom styles for Topic 12 -->
+        <link href="css/topic-12.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+
+		  <p class="lead"><strong>Script to Transform Div boxes</strong><br></p>
+
+            <p>First, create 3 Div boxes, one for each axis; X,Y and Z.<br>
+            <i>
+                #myDivX {<br>
+                    width: 300px;<br>
+                    height: 100px;<br>
+                  background-color: green;<br>
+                  border: 1px solid black;<br>
+                }<br>
+                <br>
+                #myDivY {<br>
+                    width: 300px;<br>
+                    height: 100px;<br>
+                  background-color: red;<br>
+                  border: 1px solid black;<br>
+                }<br>
+                <br>
+                #myDivZ {<br>
+                    width: 300px;<br>
+                    height: 100px;<br>
+                   background-color: rgb(179, 255, 0);<br>
+                   border: 1px solid black;<br>
+                }<br>
+            </i></p>
+            <p>Then in the script, the function <i>change</i> is called with an interval of 1 second.<br>
+            <i>setInterval(change, 1000);</i><br><br>
+    The function gets the current second and multiplies that by 18, just to make it go faster and used that amount as 
+            the degree of rotation for each Div.<br>
+        <i>var seconds = new Date().getSeconds() * 18;</i><br><br>
+    Then each Div has the rotation applied to it.<br>
+<i>               myDivX.style.transform = "rotateX("+seconds+"deg)";<br>
+    myDivY.style.transform = "rotateY("+seconds+"deg)";<br>
+    myDivZ.style.transform = "rotateZ("+seconds+"deg)";<br></i></p>
+            
+            
+            
+            <script>
+                setInterval(change, 1000);
+                
+                function change()
+                {
+                var seconds = new Date().getSeconds() * 18;
+
+               myDivX.style.transform = "rotateX("+seconds+"deg)";
+               myDivY.style.transform = "rotateY("+seconds+"deg)";
+               myDivZ.style.transform = "rotateZ("+seconds+"deg)";
+               document.getElementById("seconds").innerHTML = "Current seconds 00:"+ seconds/18;
+                }  
+                </script>
+      <br><br><br><br><br>
+      <div id=seconds></div>
+      <br><br><br><br>    
+          <div id="myDivX">
+            This div element rotates on its X axis.
+            </div>
+<br><br><br><br>
+            <div id="myDivY">
+                This div element rotates on its Y axis.
+                </div>
+<br><br><br><br>
+                <div id="myDivZ">
+                    This div element rotates on its Z axis.
+                    </div>
+                    <br><br><br><br> 
+          <hr>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      Stringify
+                    </li>
+                    <li>
+                      JSON
+                    </li>
+                    <li>
+                      Parse
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              Using JSON and Stringify to move data around.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+  
+  </html>

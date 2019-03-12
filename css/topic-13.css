@@ -1,0 +1,43 @@
+
+
+#contentContainer {
+      width: 550px;
+      height: 300px;
+      border: 2px black solid;
+      overflow: hidden;
+      background-color: rgb(254, 255, 223);
+      display: flex;
+      align-items: center;
+    }
+
+    #circle {
+      width: 150px;
+      height: 150px;
+      background-color: rgb(76, 255, 32);
+      border-radius: 50%;
+    }
+
+    #faster {
+      background-color: green;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 2px solid #333;
+      outline: none;
+    }
+
+    #slower {
+        background-color: red;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid #333;
+        outline: none;
+      }
+
+    #move:hover {
+      background-color: coral;
+    }
+    #move:active {
+      background-color: yellowgreen;
+    }
