@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--
+    This page shows how to search for a location (by free text) and 
+    retrieve the current conditions for the location.
+    For more information visit: http://api.accuweather.com/developers/
+    ** Remember that you need to obtain your own API key by contacting AccuWeather. **
+    -->
+<head>
+    
+</head>
+
+<body>
+
+
+<p id="weather"></p>
+
+<p>Enter your Zip code to see your weather: <input type = "text" id="zip" maxlength="5" size = "6"><br>
+<button id="zipBTN">Submit</button> </p>
+
+    <script>
+        //Create a container to hold html
+        var weatherHTML = document.getElementById("weather");
+
+    //create listner for button click
+            var btn = document.getElementById("zipBTN");
+            var zipCode = document.getElementById("zip");
+            btn.addEventListener("click", function() {
+                var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status != 200) {
+           alert("City not found, try again.");
+        } else {
+            var myObj = JSON.parse(this.responseText);
+            displayWeather(myObj); 
+        }
+};
+    xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode.value + ",us&units=imperial&appid=b15cb1a670b75de35d5bbb19f0754981", true);
+    xmlhttp.send(); 
+    });
+
+function displayWeather(myObj){
+    var sunUp = myObj.sys.sunrise * 1000;
+    var sunrise = new Date(sunUp).toLocaleTimeString("en-US");
+    var sunDown = myObj.sys.sunset * 1000;
+    var sunset = new Date(sunDown).toLocaleTimeString("en-US");
+   console.log(myObj.name);
+      //Using a table (the horror!!) since it is a tabular format anyway..
+     var htmlString = "<table><tr><td>City:</td><td>" 
+    + myObj.name + 
+    "<tr><td>Temperature:</td><td>" 
+    + myObj.main.temp + " Degrees" +
+    " </td></tr>" +
+    "<tr><td>Humidity:</td><td>" +
+    + myObj.main.humidity + 
+    " </td></tr>" +
+    "<tr><td>Conditions:</td><td>" 
+    + myObj.weather[0].description + 
+    " </td></tr>" +
+    "<tr><td>Barometer:</td><td>" +
+    + myObj.main.pressure + " IN" +
+    " </td></tr>" +
+    "<tr><td>Wind Speed:</td><td>" +
+    + myObj.wind.speed + " MPH" +
+    " </td></tr>";
+    var nextstring =
+    "<tr><td>Sunrise:</td><td>" +
+        sunrise +
+    " </td></tr>"+
+    "<tr><td>Sunset:</td><td>" +
+        sunset + 
+    " </td></tr>"+
+    " </table>";
+    htmlString += nextstring;
+
+    document.getElementById("weather").innerHTML = htmlString;
+
+
+}
+   
+    </script>
+   
+</body>
+
+</html>

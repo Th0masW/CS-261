@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Using XMLHTTPRequest to Consume a JSON Web Service</title>
+      <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-post.css" rel="stylesheet">
+	
+	</head>
+  <body>
+  
+      <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">CIT 261 Mobile Application Development</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Using XMLHTTPRequest to Consume a JSON Web Service.</h1>
+
+          <!-- Author 
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>-->
+
+         
+
+          <!-- Date/Time <hr>
+          <p>Posted on January 1, 2018 at 12:00 PM</p>-->
+
+          
+
+          <!-- Preview Image 
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">-->
+
+          <hr>
+
+          <!-- Post Content -->
+          <p class="lead"><strong>Weather on request:</strong><br></p>
+          <p id="weather"></p>
+
+        <p>Enter your Zip code to see your weather: <input type = "text" id="zip" maxlength="5" size = "6"><br>
+        <button id="zipBTN">Submit</button> </p>
+          
+        <p>To get this to work, a request needs to be made to the server to get the JSON feed for the zip code to check
+            the weather. The button has an event listner on it so the script does not run on the page load. Once the buttton is clicked
+            , then the value in the zip code field is appended to the URL request for the data.<br>
+            There is a check to make sure that the return is valid, that the return actually has a city.<br>
+            Here is the code to get the JSON feed, once the return is completed, then a function (displayWeather) is called
+            and the returned object is passed as the arguement.</p>
+
+            <p><i> //Create a container to hold html<br>
+                    var weatherHTML = document.getElementById("weather");<br>
+                    <br>
+                //create listner for button click<br>
+                        var btn = document.getElementById("zipBTN");<br>
+                        var zipCode = document.getElementById("zip");<br>
+                        btn.addEventListener("click", function() {<br>
+                            var xmlhttp = new XMLHttpRequest();<br>
+                    xmlhttp.onreadystatechange = function() {<br>
+                    if (this.readyState == 4 && this.status != 200) {<br>
+                       alert("City not found, try again.");<br>
+                    } else {<br>
+                        var myObj = JSON.parse(this.responseText);<br>
+                        displayWeather(myObj); <br>
+                    }<br>
+            };<br>
+                xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode.value + ",us&units=imperial&appid=b15cb1a670b75de35d5bbb19f0754981", true);<br>
+                xmlhttp.send(); <br>
+                });</i></p><br>
+                <br>
+
+                <p>From there, the displayWeather function builds a string that has a mixture of HTML and object elements. This is displayed on the page.</p>
+                <p><i>function displayWeather(myObj){<br>
+                        var sunUp = myObj.sys.sunrise * 1000;<br>
+                        var sunrise = new Date(sunUp).toLocaleTimeString("en-US");<br>
+                        var sunDown = myObj.sys.sunset * 1000;<br>
+                        var sunset = new Date(sunDown).toLocaleTimeString("en-US");<br>
+                       console.log(myObj.name);<br>
+                          //Using a table (the horror!!) since it is a tabular format anyway..<br>
+                         var htmlString = Current Weather Conditions City: <br>
+                        + myObj.name + <br>
+                        "Temperature:  <br>
+                        + myObj.main.temp + " Degrees" +<br>
+                         +<br>
+                        "Humidity: +<br>
+                        + myObj.main.humidity + <br>
+                        ......and so on.......
+                        document.getElementById("weather").innerHTML = htmlString;<br>
+                    
+                    
+                    }</i></p>
+
+
+
+
+
+
+
+
+        <script>
+                //Create a container to hold html
+                var weatherHTML = document.getElementById("weather");
+        
+            //create listner for button click
+                    var btn = document.getElementById("zipBTN");
+                    var zipCode = document.getElementById("zip");
+                    btn.addEventListener("click", function() {
+                        var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status != 200) {
+                   alert("City not found, try again.");
+                } else {
+                    var myObj = JSON.parse(this.responseText);
+                    displayWeather(myObj); 
+                }
+        };
+            xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode.value + ",us&units=imperial&appid=b15cb1a670b75de35d5bbb19f0754981", true);
+            xmlhttp.send(); 
+            });
+        
+        function displayWeather(myObj){
+            var sunUp = myObj.sys.sunrise * 1000;
+            var sunrise = new Date(sunUp).toLocaleTimeString("en-US");
+            var sunDown = myObj.sys.sunset * 1000;
+            var sunset = new Date(sunDown).toLocaleTimeString("en-US");
+           console.log(myObj.name);
+              //Using a table (the horror!!) since it is a tabular format anyway..
+             var htmlString = "<strong>Current Weather Conditions</strong><br><table><tr><td>City:</td><td>" 
+            + myObj.name + 
+            "<tr><td>Temperature: </td><td>" 
+            + myObj.main.temp + " Degrees" +
+            " </td></tr>" +
+            "<tr><td>Humidity:</td><td>" +
+            + myObj.main.humidity + 
+            " </td></tr>" +
+            "<tr><td>Conditions:</td><td>" 
+            + myObj.weather[0].description + 
+            " </td></tr>" +
+            "<tr><td>Barometer:</td><td>" +
+            + myObj.main.pressure + " IN" +
+            " </td></tr>" +
+            "<tr><td>Wind Speed:</td><td>" +
+            + myObj.wind.speed + " MPH" +
+            " </td></tr>";
+            var nextstring =
+            "<tr><td>Sunrise:</td><td>" +
+                sunrise +
+            " </td></tr>"+
+            "<tr><td>Sunset:</td><td>" +
+                sunset + 
+            " </td></tr>"+
+            " </table>";
+            htmlString += nextstring;
+        
+            document.getElementById("weather").innerHTML = htmlString;
+               
+        }
+           
+            </script>
+
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            
+          </div>
+
+
+
+
+          <!-- Comment with nested comments -->
+          <div class="media mb-4">
+            
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+      
+		 <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      AJAX
+                    </li>
+                    <li>
+                      XMLHTTP
+                    </li>
+                    <li>
+                      JSON
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Summary</h5>
+            <div class="card-body">
+              using AJAX to update things without refreshing the page.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Thomas Whitelock 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  
+  </body>
+  
+  </html>
