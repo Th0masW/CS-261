@@ -152,12 +152,12 @@
               //Using a table (the horror!!) since it is a tabular format anyway..
              var htmlString = "<strong>Current Weather Conditions</strong><br><table><tr><td>City:</td><td>" 
             + myObj.name + 
-            "<tr><td>Temperature: </td><td>" 
+            "<tr><td>Temperature:&nbsp </td><td>" 
             + myObj.main.temp + " Degrees" +
             " </td></tr>" +
             "<tr><td>Humidity:</td><td>" +
             + myObj.main.humidity + 
-            " </td></tr>" +
+            " %</td></tr>" +
             "<tr><td>Conditions:</td><td>" 
             + myObj.weather[0].description + 
             " </td></tr>" +
